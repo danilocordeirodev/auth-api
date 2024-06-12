@@ -16,4 +16,7 @@ export class User {
 
   @Column()
   lastName: string;
+
+  @Column({ default: new Date() })
+  createdAt: Date;
 }
