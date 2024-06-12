@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { NODE_ENV } from './constants/app.constants';
+import { DatabaseModule } from 'src/database';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { NODE_ENV } from './constants/app.constants';
         DATABASE_NAME: Joi.string().required(),
       }),
     }),
+    DatabaseModule,
   ],
 })
 export class AppModule {}
