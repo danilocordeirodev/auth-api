@@ -6,26 +6,24 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-type EnvVariables = ReturnType<typeof configuration>
-
 @Module({
   imports: [
-    AuthModule, 
-    ConfigModule.forRoot({isGlobal: true, load: [configuration]}),
+    AuthModule,
+    ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      inject:[ConfigService],
+      inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
         host: config.get<string>('database.host'),
         port: config.get<number>('database.port'),
         username: config.get<string>('database.user'),
         password: config.get<string>('database.password'),
-        database: config.get<string>('database.namegit '),
+        database: config.get<string>('database.name'),
         entities: [],
         synchronize: true,
-      })
-    })
+      }),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
