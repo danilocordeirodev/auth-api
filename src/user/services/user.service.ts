@@ -1,9 +1,9 @@
 import { QueryRunner } from 'typeorm';
-import { CreateUserDto } from '../dto/user.dto';
 import { UserRepository } from '../repositories/user.repository';
 import { UserEntity } from '../entities/user.entity';
 import { Injectable } from '@nestjs/common';
 import { AuthenticationEntity } from 'src/authentication/entities/authentication.entity';
+import { CreateUserDto } from '../dtos';
 
 @Injectable()
 export class UserService {

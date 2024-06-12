@@ -4,6 +4,7 @@ import * as Joi from 'joi';
 import { NODE_ENV } from './constants/app.constants';
 import { DatabaseModule } from 'src/database';
 import { UserModule } from 'src/user';
+import { AuthenticationModule } from 'src/authentication';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UserModule } from 'src/user';
       }),
     }),
     DatabaseModule,
+    AuthenticationModule,
     UserModule,
   ],
 })
