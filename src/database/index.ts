@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from './strategies/snake_naming.stratety';
 import { NODE_ENV } from 'src/app/constants/app.constants';
+import { AuthenticationSubscriber } from 'src/authentication/subscriber/authentication.subscriber';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { NODE_ENV } from 'src/app/constants/app.constants';
         synchronize: configService.get('NODE_ENV') === NODE_ENV.DEVELOPMENT,
         logging: configService.get('NODE_ENV') === NODE_ENV.DEVELOPMENT,
         extra: { charset: 'utf8mb4_unicode_ci' },
+        subscribers: [AuthenticationSubscriber],
       }),
     }),
   ],
